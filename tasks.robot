@@ -18,23 +18,23 @@ ${zip_file}         ${output_folder}${/}pdf_archive.zip
 
 *** Tasks ***
 Order robots from RobotSpareBin Industries Inc
-    WHILE    True
-        Directory Cleanup
-        Open the robot order website
-        ${orders}=    Get orders
-        FOR    ${row}    IN    @{orders}
-            Close the annoying modal
-            Fill The form    ${row}
-            Wait Until Keyword Succeeds    10x    1s    Preview the robot
-            Wait Until Keyword Succeeds    10x    1s    Submit The Order
-            ${orderid}    ${img_filename}=    Take a screenshot of the robot
-            ${pdf_filename}=    Store the receipt as a PDF file    ORDER_NUMBER=${order_id}
-            Embed the robot screenshot to the receipt PDF file    IMG_FILE=${img_filename}    PDF_FILE=${pdf_filename}
-            Go to order another robot
-        END
-        Create a Zip File of the Receipts
-        Close Browser
+    # WHILE    True
+    Directory Cleanup
+    Open the robot order website
+    ${orders}=    Get orders
+    FOR    ${row}    IN    @{orders}
+        Close the annoying modal
+        Fill The form    ${row}
+        Wait Until Keyword Succeeds    10x    1s    Preview the robot
+        Wait Until Keyword Succeeds    10x    1s    Submit The Order
+        ${orderid}    ${img_filename}=    Take a screenshot of the robot
+        ${pdf_filename}=    Store the receipt as a PDF file    ORDER_NUMBER=${order_id}
+        Embed the robot screenshot to the receipt PDF file    IMG_FILE=${img_filename}    PDF_FILE=${pdf_filename}
+        Go to order another robot
     END
+    Create a Zip File of the Receipts
+    Close Browser
+    # END
 
 
 *** Keywords ***
