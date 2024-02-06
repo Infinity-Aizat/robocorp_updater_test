@@ -54,7 +54,7 @@ Open the robot order website
     Click Link    Order your robot!
 
 Get Orders
-    Download    https://robotsparebinindustries.com/orders.csv    target_file=${orders_file}    overwrite=True
+    Download    https://robotsparebinindustries.com/orders.csv    target_file=${orders_file}    overwrite=True    verify=${False}
     ${table}=    Read table from CSV    orders.csv
     RETURN    ${table}
 
